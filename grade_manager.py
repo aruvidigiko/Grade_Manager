@@ -34,6 +34,33 @@ def add_student() :
     print(f"Added {name} with mark {mark} (Grade {get_grade(mark)}). ")   
 
 
+def show_results():
+    # Guard: nothing to show yet (also prevents dividing by zero)
+    if len(students) == 0:
+        print("No students added yet. Add a student first.")
+        return
+
+    # Table header
+    print()
+    print(f"{'Name':<12}{'Mark':>6}{'Grade':>8}")
+    print("-" * 26)
+
+    # One row per student, and collect the marks for the statistics
+    marks = []
+    for s in students:
+        print(f"{s['name']:<12}{s['mark']:>6}{get_grade(s['mark']):>8}")
+        marks.append(s["mark"])
+
+    # Statistics
+    average = sum(marks) / len(marks)
+    print("-" * 26)
+    print(f"Average: {average:.1f}   Highest: {max(marks)}   Lowest: {min(marks)}")
+    print()
+
+
+# ---- Temporary test ----
+show_results()        # should say "No students added yet"
 add_student()
 add_student()
-print(students)
+add_student()
+show_results()
