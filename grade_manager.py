@@ -58,9 +58,19 @@ def show_results():
     print()
 
 
-# ---- Temporary test ----
-show_results()        # should say "No students added yet"
-add_student()
-add_student()
-add_student()
-show_results()
+while True:
+    print("===== Student Grade Manager =====")
+    print("1. Add student")
+    print("2. Show results")
+    print("3. Quit")
+    choice = input("Choose an option (1-3): ").strip()
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        show_results()
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter 1, 2 or 3.")
